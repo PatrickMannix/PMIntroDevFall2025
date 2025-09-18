@@ -1,48 +1,55 @@
 using UnityEngine;
-using TMPro; // Use this for TextMeshPro
+using TMPro;
 
-public class CountdownTimer : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    // The total time in seconds for the timer.
-    public float totalTime = 60f;
+    public float comboTimer;
+    public TextMeshProUGUI myText;
+    public GameObject myPlayer;
+    public WASDcontroller2D playerController;
 
-    // A reference to the TextMeshPro component to display the time.
-    public TextMeshProUGUI timerText;
+    private bool comboActive = false;
+    private float lastHitTime;
+    public float comboResetTime = 2.0f;
 
-    // A flag to check if the timer is running.
-    private bool isTimerRunning = false;
-
-    // Use this for initialization
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // Start the timer when the game begins.
-        isTimerRunning = true;
+        comboTimer = 0f;
+        myText.text = "0.00";
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isTimerRunning)
+        if (comboActive)
         {
-            if (totalTime > 0)
-            {
-                // Subtract the time since the last frame.
-                totalTime -= Time.deltaTime;
+            comboTimer += Time.deltaTime;
+            myText.text = comboTimer.ToString("F2");
 
-                // Update the UI text with the formatted time.
-                // The 'F1' formats the float to one decimal place.
-                timerText.text = totalTime.ToString("F1");
-            }
-            else
+            if (Time.time - lastHitTime > comboResetTime)
             {
-                // Stop the timer and set the time to 0.
-                isTimerRunning = false;
-                totalTime = 0;
-                timerText.text = "0.0";
-
-                // You can add an event here for when the timer ends.
-                Debug.Log("Time's up!");
+                EndCombo();
             }
         }
+    }
+
+    public void StartCombo()
+    {
+        if (!comboActive)
+        {
+            comboActive = true;
+            comboTimer = 0f;
+            Debug.Log("Combo Started!");
+        }
+        lastHitTime = Time.time;
+    }
+
+    private void EndCombo()
+    {
+        comboActive = false;
+        Debug.Log("Combo Ended!");
+        comboTimer = 0f;
+        myText.text = "0.00";
     }
 }
