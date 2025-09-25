@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class WASDcontroller2D : MonoBehaviour
@@ -6,21 +7,22 @@ public class WASDcontroller2D : MonoBehaviour
     public float jumpForce = 20f;
     public float attackForce = 50f;
     public Rigidbody2D myRB;
-    public Rigidbody2D dummyRB;
 
     public bool jumped = false;
     public bool grounded = false;
     public bool attacking = false;
+    public AttackHelper myHelper;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        myHelper = transform.Find("AttackPoint").gameObject.GetComponent<AttackHelper>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+
+
         if (Input.GetKeyUp(KeyCode.Space) && grounded)
         {
             jumped = true;
@@ -35,6 +37,8 @@ public class WASDcontroller2D : MonoBehaviour
     //Fixed Update is called once per physics step
     void FixedUpdate()
     {
+        myHelper.isAttacking = attacking;
+
         //let's start with a simple WASD controller
         Vector3 velocity = Vector3.zero;
 
@@ -58,7 +62,6 @@ public class WASDcontroller2D : MonoBehaviour
 
         if (attacking)
         {
-            Attack();
             attacking = false;
         }
     }
@@ -82,13 +85,4 @@ public class WASDcontroller2D : MonoBehaviour
         myRB.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
     }
 
-    void Attack()
-    {
-        if (dummyRB != null)
-        {
-            Vector2 attackDirection = (dummyRB.position - myRB.position).normalized;
-            dummyRB.AddForce(attackDirection * attackForce, ForceMode2D.Impulse);
-            Debug.Log("Attacked dummy!");
-        }
-    }
 }
