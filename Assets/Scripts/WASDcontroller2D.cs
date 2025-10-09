@@ -11,12 +11,11 @@ public class WASDcontroller2D : MonoBehaviour
     public bool jumped = false;
     public bool grounded = false;
     public bool attacking = false;
-    public AttackHelper myHelper;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        myHelper = transform.Find("AttackPoint").gameObject.GetComponent<AttackHelper>();
+        
     }
 
     void Update()
@@ -37,7 +36,7 @@ public class WASDcontroller2D : MonoBehaviour
     //Fixed Update is called once per physics step
     void FixedUpdate()
     {
-        myHelper.isAttacking = attacking;
+        
 
         //let's start with a simple WASD controller
         Vector3 velocity = Vector3.zero;

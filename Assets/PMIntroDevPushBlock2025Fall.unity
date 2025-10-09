@@ -503,6 +503,8 @@ MonoBehaviour:
   myPlayer: {fileID: 1123792852}
   playerController: {fileID: 0}
   comboResetTime: 2
+  timerText: {fileID: 0}
+  cooldownText: {fileID: 0}
 --- !u!114 &197264663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,11 +578,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 303510349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 055841e227122428dbd36114dc3c2227, type: 3}
+  m_Script: {fileID: 11500000, guid: 030d234ded427404abc7cc291f58a0f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAttacking: 0
+  speed: 10
+  jumpForce: 20
   attackForce: 50
+  myRB: {fileID: 0}
+  jumped: 0
+  grounded: 0
+  attacking: 0
 --- !u!61 &303510352
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1205,7 +1212,6 @@ MonoBehaviour:
   jumped: 0
   grounded: 0
   attacking: 0
-  myHelper: {fileID: 0}
 --- !u!61 &1123792855
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1485,6 +1491,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  comboWindowTime: 1
+  comboText: {fileID: 0}
+  bounceForce: 40
+  damagePerHit: 10
 --- !u!50 &1603119326
 Rigidbody2D:
   serializedVersion: 5
