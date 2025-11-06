@@ -1,0 +1,18 @@
+:root {
+}
+
+.panel {
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
+
+.hide {
+}
+
+.menu {
+}
+
+.unity-button:hover {
+    background-color: rgb(33, 73, 142);
+    color: rgb(156, 26, 26);
+}

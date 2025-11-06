@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Main-Menu.uss?fileID=7433441132597879392&amp;guid=b7c10fa96be78954f8ce5ca15f1ae928&amp;type=3#Main-Menu" />
+    <ui:VisualElement name="MyMenu" class="panel hide menu" style="flex-grow: 1; visibility: visible; display: flex; overflow: visible;">
+        <ui:Button text="START GAME" name="StartGameButton" class="menu" style="align-items: center; justify-content: flex-start; white-space: pre; -unity-text-align: middle-center; visibility: visible; display: flex; overflow: visible; opacity: 1;">
+            <ui:VisualElement name="Logo" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=5923138177525885446&amp;guid=66a819f4007d9444489fc5c7c8d9de03&amp;type=3#arrow-left&quot;);" />
+            <ui:Button text="Top Path" style="height: 332px; width: 210px;" />
+            <ui:Button text="Middle Path" class="unity-button" style="height: 360px; width: 217px;" />
+            <ui:Button text="Bottom Path" style="white-space: nowrap; -unity-text-align: middle-center; text-overflow: clip; width: 218px; height: 373px;" />
+            <ui:Button text="Secret" style="height: 332px; width: 210px; align-items: flex-start;" />
+        </ui:Button>
+    </ui:VisualElement>
+</ui:UXML>
